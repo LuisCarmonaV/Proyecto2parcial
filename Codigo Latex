@@ -1,0 +1,188 @@
+%########################################
+% Template in latex for classroom assignments and project report
+% 
+%
+% Author: Ñuis Carmona
+%
+% Use xelatex compiler 
+%########################################
+
+
+
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt,oneside,fleqn]{article}
+
+
+% Often used text to commands
+\newcommand{\clr}{gray!60}
+\newcommand{\gray}{\textcolor{gray!60}}
+\newcommand{\maintitle}{Proyecto Parcial}
+\newcommand{\subject}{Métodos Numéricos}
+
+\newcommand{\nombre}{Luis Adrián Carmona Villalobos}
+\newcommand{\mat}{A01748395}
+\newcommand{\class}{\gray {Métodos Numéricos}}
+\newcommand{\hw}{\gray {Proyecto Parcial}}
+
+
+
+% All packages
+\usepackage{amssymb,amsthm,amsmath,enumerate,fancyhdr,graphicx,tabularx}
+\usepackage{microtype}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{mathpazo}
+\usepackage{mdframed}
+\usepackage{parskip}
+\usepackage{fontspec} 
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{lipsum}  % generates filler text
+\linespread{1.1} 
+
+
+% FONTS
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\defaultfontfeatures{Mapping=tex-text}
+\setromanfont [Ligatures={Common}, Numbers={OldStyle}, Variant=01]{Linux Libertine O}
+%\setmonofont[Scale=0.8]{Monaco}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+%\setmonofont{Inconsolata}
+
+% Frame for Problem Statement definition
+\newenvironment{problem}[1]
+{\begin{mdframed}
+		\textbf{\textsc{Descripción del problema a resolver:}}
+}
+{\end{mdframed}}
+
+
+
+% Environment for Solution definition
+\newenvironment{solution}[1]
+{\textbf{\textsc{Tabla de algoritmos: }}\\}
+
+
+% header and footer content
+\pagestyle{fancy}
+\lhead{\hw {\hwnumber}}
+\chead{}
+\rhead{\class}
+\cfoot{}
+
+
+% Header line with color gray!60
+\renewcommand{\headrulewidth}{0.0pt}% 2pt header rule
+\setlength{\headsep}{1.5cm}
+
+
+\pgfplotsset{compat=1.16}
+% Document 
+\begin{document}
+    % No header for the first page
+    \thispagestyle{empty}
+	% Intro Page Starts
+	
+	\begin{figure}
+		\vspace{5pt}
+		\centering
+		\includegraphics[width=9cm, height=9cm]{./Logo/logo_tec.jpg} \\
+		\vspace{25pt}
+	\end{figure}
+
+	
+	\centering
+	{
+	\Huge \maintitle\\
+	\huge \subject\\
+	\vspace{10pt}
+	\textcolor{black!70}{
+    \large \name \; \matricula\\
+    \large \nombre \; \mat\\
+	\vspace{100pt}
+	01 de noviembre de 2021
+	}
+
+	}
+	\newpage
+	% Define foot name after intro page
+	%\lfoot{\gray \name}
+	\rfoot{\thepage}
+	% Intro Page Ends
+
+\section{Introducción}
+\begin{abstract}
+    Existen diversos métodos para resolver un sistema de ecuaciones lineales. Su elección depende de la propia complejidad del sistema, o sea, del número de ecuaciones, número de incógnitas, componentes que conforman al sistema, y en general, de los atributos del sistema en consideración.\\\vspace{5pt}
+    
+Muchos fenómenos del desempeño profesional de ingeniería  se plantean como ecuaciones y sistemas de ecuaciones con más de tres ecuaciones y tres incógnitas, de aquí la importancia, primero, de hacer el modelo matemático representativo del fenómeno, y después, tomar la decisión del método numérico más adecuado para alcanzar la solución y su interpretación.\\
+
+\end{abstract}
+
+\section{ Descripcion del problema a resolver}
+    Una compañía de electrónica produce transistores, resistencias y chips de computadora. Para crear un transistor se requiere de cuatro unidades de cobre, una de zinc y dos de vidrio.
+       
+\vspace{5pt}Cada resistor requiere de tres unidades de cobre, tres de zinc y una unidad de vidrio. Cada chip de computadora requiere de dos, una y tres unidades de materiales, respectivamente. Los suministros de materiales varian cada semana por lo que se requiere determinar producción diferente cada semana.\\
+
+\section{Resultados}
+    De acuerdo con el inciso a. la configuración del sistema de ecuaciones que modela la situación sobre la producción de transistores (x), resistencias (y) y chips (z) que se debe fabricar en esa semana, se presenta a continuación:
+4x+3y+2z= 960\\
+x+3y+z= 510\\
+2x+y+3z=610\\
+\space
+    \\X+3y+z= 510 Se tiene disponible de cobre, para esa semana, 960 unidades. Además, se sabe de antemano que para cada x, se requieren de cuatro unidades, para cada y, tres unidades y para cada z, dos unidades\\
+
+\\2x+y+3z=610 Una situación similar ocurre con las 510 unidades de zinc y las 610 unidades de cobre.
+ En la diagonal principal han quedado los coeficientes dominantes, los de mayor valor absoluto.\\
+        \begin{figure}[h!]
+		\vspace{5pt}
+		\centering
+		\includegraphics[scale = .50]{./Logo/Jacobiexcel.png} \\
+		\caption{Jacobi Excel}
+	\end{figure}
+	
+		\begin{figure}[h!]
+		\vspace{5pt}
+		\centering
+		\includegraphics[scale = .50]{./Logo/jacoproyecto.png} \\
+		\caption{jacobi matlab}
+	\end{figure}
+	
+		\begin{figure}[h!]
+		\vspace{5pt}
+		\centering
+		\includegraphics[scale = .50]{./Logo/seidelresul.png} \\
+		\caption{seidel matlab}
+	\end{figure}
+			\begin{figure}[h!]
+		\vspace{5pt}
+		\centering
+		\includegraphics[scale = .50]{./Logo/cramerproyecto.png} \\
+		\caption{cramer matlab y excel}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		\vspace{5pt}
+		\centering
+		\includegraphics[scale = .50]{./Logo/Seidel_Excel.png} \\
+		\caption{Seidel Excel}
+	\end{figure}
+	Mientras que aproximadamente en la iteración 16 ya se había logrado el resultado en Gauss Seidel, en el método de Jacobi aún se requieren de más iteraciones, hasta la iteracion 284 el error es aceptable, se tendrian con cada iteracion son milesimas lo que baja el error. Los resultados que satisfacen al sistema son:\\
+Transistores X=120 Resistencias Y=100 Chips Z=90
+
+Para
+	
+	
+	
+ 	\section{Conclusiones}
+ 	 Para los transistores se requieren 120 componentes, para las resistencias 100 piezas y para los chips 90. Estos resultados satisfacen la corrida de producción indicada.\\
+ 	 
+El resolver los metodos a traves de sistemas de ecuaciones ya sean lineales o no, existen diferentes metodos de solución, de los cuales algunos son mas eficientes que otros dependiendo de las variables, matrices que se formen y si son linenales o no lineales.
+ 	 
+\end{document}
